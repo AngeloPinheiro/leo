@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CashTransacaoResource;
+use App\Http\Response\CollectionResponse;
+use App\Models\CashTransacao;
+
 class ExampleController extends Controller
 {
     /**
@@ -16,6 +20,7 @@ class ExampleController extends Controller
 
     public function teste()
     {
-        return 'teste um dois tres quatro';
+        $teste = CashTransacaoResource::collection(CashTransacao::limit(150)->get());
+        return new CollectionResponse($teste);
     }
 }
